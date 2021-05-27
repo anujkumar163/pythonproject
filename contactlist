@@ -1,0 +1,99 @@
+print("!--contact app---!")
+import pickle
+import pymysql
+mydb = pymysql.connect(host="localhost",port=3306,user="root",passwd="",database="8pm_sample")
+mycursor = mydb.cursor()
+
+f1 = open("userdetail", "wb")
+j = []
+i = 1
+while(i<=3):
+    num = int(input("enter no user you want to add"))
+    name= input("enter your name")
+    gender = input("enter your gender, male/female")
+    address = input("enter your city name")
+    contno = int(input("enter your phone no."))
+    mycursor.execute("insert into sample(name,vehical,vehno) values ('{}','{}','{}')".format(name,gender,contno))
+    mydb.commit()
+    j.append(name)
+    j.append(gender)
+    j.append(address)
+    j.append(contno)
+    print(i*num)
+    i=i+1
+    if i>num:
+        break
+    print("added!")
+def menu(choice):
+    print("1. Add name")
+    print("2. Add gender")
+    print("3. Add address")
+    print("4. Add phone number")
+    print("added!")
+    choice = int(input("enter your choice"))
+    if choice==1:
+        print("Add name")
+        name= input("enter your name")
+        print("new name added")
+        j.append(name)
+    elif choice==2:
+        print("Add gender")
+        print("select male or female")
+        gender = input("enter your gender, male/female")
+        print("Gender added")
+        j.append(gender)
+    elif choice==3:
+        print("Add address")
+        address = input("enter your city name")
+        print("new address added")
+        j.append(address)
+    elif choice==4:
+        print("Add phone number")
+        number = int(input("enter your phone number"))
+        print("number  added")
+        j.append(number)
+    
+menu(2)
+
+pickle.dump(j, f1)
+f1.close()
+
+f2=open("userdetail", "rb")
+data = pickle.load(f2)
+print(data)
+print("Updated user detail.")
+f2.close()
+print("!--Thank for your support--!")
+print("!---Created you contact list--!")
+print("!:-)==!!==(-:!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
