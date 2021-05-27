@@ -1,0 +1,62 @@
+
+def user_detail():
+    n = input("enter your name")
+    a = int(input("enter your age"))
+    print("chose the city pleaze") 
+def city_option():
+    print("city options")
+    print("1. satna")
+    print("2. mahiar")
+    print("3. panna")
+    print("4. rewa")
+    c = int(input("select city"))
+def city_select(nm):
+    nm = int(input("city options")) 
+    if nm==1:
+        print("sarna is famous for heritage places")    
+    elif nm==2:
+        print("mahiar is famous for temples")          
+    elif nm==3:
+        print("panna is famous for diamond mines")            
+    elif nm==4:
+        print("rewa is famous for white tiger")
+    print( "Great choice, Nice place to visit")        
+print(user_detail(), city_option(),city_select(0))
+
+
+
+def hotel_cost(days):
+    print("hotel options")
+    print("1. ram hotel")
+    print("2. jain hotel")
+    print("3. sai hotel")
+    print("4. patel hotel")
+    c = input("select hotel")
+    print("you have select a good hotel")
+    days =  int(input("enter no. of days you want to stay"))   
+    return 140*days
+
+def plane_ride_cost(city):
+    if city=="satna":
+        return 183
+    elif city=="mahiar":
+        return 120
+    elif city=="panna":
+        return 222
+    elif city=="rewa":
+        return 100
+def rental_car_cost(days):
+    if days<3:
+        return days*40
+    elif days>=3<7:
+        return days*20
+    elif days>=7:
+        return days*70
+def trip_cost(city, days, sp):
+    city = input("enter city name")
+    days = int(input("enter no. of days to stay in hotel"))
+    sp = float(input("enter spending momeny"))
+    
+    return hotel_cost(days) + rental_car_cost(days) +plane_ride_cost(city)  + sp
+cost = print (trip_cost('satna',5,600))
+print(cost)
